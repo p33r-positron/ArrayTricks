@@ -1,4 +1,3 @@
-```js
 function rev(a)
 {
 	const l = a.length, m = l-1;
@@ -14,66 +13,71 @@ function rev(a)
 
 function sort(a)
 {
-  const l = a.length;
-  if(!l)return a;
-  var w = a[0];
-  for(var i = 0 ; i < l ; i++)
-    if(a[i] > w)w = a[i];
-  return w;
+	const l = a.length;
+	if(!l)return a;
+	var w = a[0];
+	for(var i = 0 ; i < l ; i++)
+		if(a[i] > w)w = a[i];
+	return w;
 };
 
 function push(a, v)
 {
-  return a[a.length] = v;
+	return a[a.length] = v;
 };
 
 function push2(a,v)
 {
-  const l = a.length;
-  a.length++;
-  return a[l] = v;
+	const l = a.length;
+	a.length++;
+	return a[l] = v;
 };
 
 function pop(a)
 {
-  if(!a.length)return a;
-  const x = a[a.length-1];
-  a.length--;
-  return x;
+	if(!a.length)return a;
+	const x = a[a.length-1];
+	a.length--;
+	return x;
 };
 
 function shift(a)
 {
-  return pop(rev(a));
+	return pop(rev(a));
 };
 
 function shift2(a)
 {
-  var l = a.length;
-  if(!l)return a;
-  const a2 = new Array(--l);
-  for(var i = 0 ; i < l ;)
-    a2[i] = a[++i];
-  return a2;
+	var l = a.length;
+	if(!l)return a;
+	const a2 = new Array(--l);
+	for(var i = 0 ; i < l ;)
+		a2[i] = a[++i];
+	return a2;
 };
 
 function unshift(a, v)
 {
-  return push(rev(a), v);
+	return push(rev(a), v);
 };
 
 function unshift2(a, v)
 {
-  var l = a.length;
-  const a2 = new Array(++l);
-  a2[0] = v;
-  for(var i = 1 ; i <= l ; i++)
-    a2[i] = a[i-1];
-  return a2;
+	var l = a.length;
+	const a2 = new Array(++l);
+	a2[0] = v;
+	for(var i = 1 ; i <= l ; i++)
+		a2[i] = a[i-1];
+	return a2;
 };
 
 function splice(a, p, n)
 {
-  const l = a.length;
-  //wip, brb
+	n = typeof n !== "undefined" ? n : 0;
+	const l = a.length-1;
+	if(p+n >= l)return new Array();
+	const a2 = new Array(l-p-n);
+	for(var i = p, j = 0 ; i <= l && (!n || j < n) ; (i++,j++))
+		a2[i-p] = a[i];
+	return a2;
 };
